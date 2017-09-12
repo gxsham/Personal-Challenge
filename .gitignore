@@ -13,7 +13,7 @@
 x64/
 [Bb]in/
 [Oo]bj/
-
+.vs
 PersonalChallenge/wwwroot/ProfilePics
 PersonalChallenge/wwwroot/Challenges
 PersonalChallenge/wwwroot/TeamPics

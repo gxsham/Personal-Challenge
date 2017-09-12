@@ -100,7 +100,7 @@ namespace PersonalChallenge.Controllers
         // GET: Challenges/Create
         public ActionResult Create()
         {
-			ViewBag.ChallengeTypes = new SelectList(_context.ChallengeTypes, "Id", "Name");
+			ViewBag.ChallengeTypes = new SelectList(_context.ChallengeTypes.Where(x=>x.Approved), "Id", "Name");
 			return View();
         }
 
