@@ -1,0 +1,63 @@
+@model PersonalChallenge.Models.TeamViewModels.TeamDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TeamDetailsViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChallengesDone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChallengesDone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamPic)
+        </dt>
+        <dd>
+            <img src="~/TeamPics/@Model.TeamPic" style="overflow: hidden; position: relative; max-width:400px;" />
+        </dd>
+        <dt>
+            Challenges
+        </dt>
+        <dd>
+            @foreach (var item in Model.Challenges)
+             {
+                <div>@item.Name | @item.Description | @item.IsActive</div>
+                <br />
+            }
+        </dd>
+        <dt>
+            Members
+        </dt>
+        <dd>
+            @foreach (var item in Model.Members)
+            {
+                <div>@item.Name | @item.Surname | @item.ChallengesDone</div>
+                <br />
+             }
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a> | 
+    <a asp-action="Unroll">Unroll from this team</a>
+</div>
