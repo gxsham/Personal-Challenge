@@ -4,62 +4,25 @@
     ViewData["Title"] = "MyProfile";
 }
 
-<h2>MyProfile</h2>
 
-<div>
-    <h4>ProfileViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Birthday)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProfilePic)
-        </dt>
-        <dd>
-            <img src="~/ProfilePics/@Model.ProfilePic" style="overflow: hidden; position: relative; max-width:400px;" />
-        </dd>
-         @if(Model.TeamId!=null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.TeamName)
-            </dt>
-            <dd>
-                @Html.ActionLink(Model.TeamName,"Details","Teams", new {id = Model.TeamId })
+
+<div id="main" class="alt">
+
+    <!-- One -->
+    <section id="one">
+        <div class="inner">
+            <header class="major">
+                <h1>@Model.Name @Model.Surname</h1>
+            </header>
+            <p><span class="image left"><img src="~/ProfilePics/@Model.ProfilePic" alt="" /></span> @Model.Email <br /> @Model.Birthday <br /> Challenges Done: @Model.ChallengesDone <br /> 
+            @if (Model.TeamId != null)
+            {
+                @Html.ActionLink(Model.TeamName, "Details", "Teams", new { id = Model.TeamId }) <br />
                 @Html.ActionLink("Go to Challenges", "Index", "Challenges")
-            </dd>
-         }
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.ChallengesDone)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ChallengesDone)
-        </dd>
-    </dl>
+                }
+            </p>
+        </div>
+    </section>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+

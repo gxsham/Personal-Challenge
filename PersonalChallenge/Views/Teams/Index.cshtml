@@ -4,57 +4,45 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<div class="danger">
-   <label style="color:red;Background:ActiveBorder">@TempData["Errors"]</label> 
+<div id="wrapper">
+    <section id="banner" class="style2">
+        <div class="inner">
+            <span class="image">
+                <img src="images/pic07.jpg" alt="" />
+            </span>
+            <header class="major">
+                <h1>Teams</h1>
+            </header>
+            <div class="content">
+                <p>
+                    Enroll to an existing team
+                    or create a new One <a asp-controller="Teams" asp-action="Create" class="button">Create a team</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="two" class="spotlights">
+        @foreach (var item in Model)
+        {
+            <section>
+                <a class="image">
+                    <img src="~/TeamPics/@item.TeamPic" alt="" data-position="center center" />
+                </a>
+                <div class="content">
+                    <div class="inner">
+                        <header class="major">
+                            <h3>@item.Name</h3>
+                        </header>
+                        <p>Members: @item.Members <br />Challenges Done: @item.ChallengesDone <br />Active challenges: @item.ActiveChallenges</p>
+                        <ul class="actions">
+                            <li>@Html.ActionLink("Enroll", "Enroll", new { item.Id},new {@class = "button" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        }   
+    </section>
+
 </div>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ChallengesDone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Members)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ActiveChallenges)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TeamPic)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChallengesDone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Members)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActiveChallenges)
-            </td>
-            <td>
-                <img src="~/TeamPics/@item.TeamPic" style="overflow: hidden; position: relative; max-width:200px;" />
-            </td>
-            <td>
-                @Html.ActionLink("Enroll", "Enroll", new { item.Id })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
