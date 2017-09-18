@@ -4,59 +4,47 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<div id="wrapper">
 
-<div>
-    <h4>ChallengeDetailsViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ChallengeType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ChallengeType)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OwnerName)
-        </dd>
-        <dt>
-           Proofs
-        </dt>
-        <dd>
-           @foreach (var item in Model.Proofs)
-           {
-            <div>@item.OwnerName | @item.Comment | @item.Quantity @item.MesuredIn </div>
-            <img src="~/Challenges/@Model.Id/@item.ContentPath" style="overflow: hidden; position: relative; max-width:400px;" />
-             <br />
-           }
-        </dd>
-    </dl>
+    <div id="main" class="alt">
+
+        <!-- One -->
+        <section id="one">
+            <div class="inner">
+                <header class="major">
+                    <h1>@Model.Name</h1>
+                </header>
+              
+                    <div class="actions">
+                        @if (!Model.AlreadyAdded)
+                        {
+                            @Html.ActionLink("Add Proof", "AddProof", new { Model.Id },new {@class="button" })
+                        }
+                         <a asp-action="Index" class="button">Back to List</a>
+                    </div>
+                <h3>Is active: @Model.IsActive</h3>
+                <h4>Type: <i>@Model.ChallengeType</i> by @Model.OwnerName</h4>
+                
+                <p>@Model.Description</p>              
+            </div>
+        </section>
+        <section id="one" class="tiles">
+          @foreach (var item in Model.Proofs)
+          {
+            <article>
+                <span class="image">
+                    <img src="~/Challenges/@Model.Id/@item.ContentPath" alt="" />
+                </span>
+                <header class="major">
+                    <h3>@item.OwnerName</h3>
+                    <p>Did @item.Quantity @item.MesuredIn</p>
+                    <p><blockquote>@item.Comment</blockquote></p>
+                </header>
+            </article>
+}
+
+          </section>
+    </div>
 </div>
-<div>
-    @if (!Model.AlreadyAdded)
-    {
-     @Html.ActionLink("Add Proof", "AddProof", new { Model.Id })
-    }
-    | <a asp-action="Index">Back to List</a>
-</div>
+
+

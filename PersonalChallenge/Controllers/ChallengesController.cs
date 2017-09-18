@@ -80,7 +80,8 @@ namespace PersonalChallenge.Controllers
 					ContentPath = x.ContentPath,
 					Quantity = x.Quantity
 				}).ToList();
-				if (_context.Proofs.Any(x => x.UserId == user.Id && x.ChallengeId == challenge.Id) || challenge.IsActive == false)
+				var currentUser = await _userManager.FindByEmailAsync(User.Identity.Name);
+				if (_context.Proofs.Any(x => x.UserId == currentUser.Id && x.ChallengeId == challenge.Id) || challenge.IsActive == false)
 					result.AlreadyAdded = true;
 				var measuredIn = _context.ChallengeTypes.Find(challenge.ChallengeTypeId).MeasuredIn;
 				foreach (var item in result.Proofs)

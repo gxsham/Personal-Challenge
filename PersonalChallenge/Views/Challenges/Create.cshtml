@@ -4,65 +4,63 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
 
-<form asp-action="Create"  enctype="multipart/form-data" method="post">
-    <div class="form-horizontal">
-        <h4>CreateChallengeViewModel</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ChallengeTypeId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="ChallengeTypeId" asp-items="ViewBag.ChallengeTypes"></select>
-                <span asp-validation-for="ChallengeTypeId" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Quantity" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Comment" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Comment" class="form-control" />
-                <span asp-validation-for="Comment" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ContentPath" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input type="file" asp-for="ContentPath" class="form-control" />
-                <span asp-validation-for="ContentPath" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+<div id="wrapper">
+    <div id="main">
+
+
+        <div class="inner">
+            <header class="major">
+                <h2>Create a challenge</h2>
+            </header>
+            <section>
+                <form asp-action="Create" enctype="multipart/form-data" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="field half first">
+                        <label asp-for="Name" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="field half">
+                        <label asp-for="Quantity" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Quantity" class="form-control" />
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label asp-for="ChallengeTypeId" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <select asp-for="ChallengeTypeId" asp-items="ViewBag.ChallengeTypes"></select>
+                            <span asp-validation-for="ChallengeTypeId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                      
+                        <label asp-for="Description" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label asp-for="ContentPath" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input type="file" asp-for="ContentPath" class="form-control" />
+                            <span asp-validation-for="ContentPath" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Create" class="special" /></li>
+                        <li><input type="reset" value="Clear" /></li>
+                        <li><a asp-action="Index" class="button">Back to List</a></li>
+                    </ul>
+                </form>
+            </section>
         </div>
     </div>
-</form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

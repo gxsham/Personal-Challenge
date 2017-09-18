@@ -35,9 +35,9 @@
     <!-- Menu -->
     <nav id="menu">
         <ul class="links">
-            <li><a asp-controller="Home" asp-action="MyProfile">My Profile</a></li>
+            <li><a asp-controller="Home" asp-action="MyProfile"><b>My Profile</b></a></li>
             <li><a asp-controller="Teams" asp-action="Index">Teams</a></li>
-            <li><a asp-controller="ChallengeTypes" asp-action="Create">Add a challenge type</a></li>
+            <li><a asp-controller="ChallengeTypes" asp-action="Index">Challenge Types</a></li>
             <li>@await Html.PartialAsync("_LoginPartial")</li>
         </ul>
     </nav>

@@ -15,6 +15,7 @@ namespace PersonalChallenge.Models.ChallengeViewModels
 		[Display(Name = "Proof picture")]
 		public IFormFile ContentPath { get; set; }
 		[Required]
+		[Display(Name = "Challenge type")]
 		public Guid ChallengeTypeId { get; set; }
 		public double Quantity { get; set; }
 	}

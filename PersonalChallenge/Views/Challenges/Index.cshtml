@@ -4,59 +4,43 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ChallengeType)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Proofs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Members)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChallengeType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proofs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Members)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { item.Id })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div id="wrapper">
+    <section id="banner" class="style2">
+        <div class="inner">
+            <span class="image">
+                <img src="images/pic07.jpg" alt="" />
+            </span>
+            <header class="major">
+                <h1>Challenges</h1>
+            </header>
+            <div class="content">
+                <p>
+                    Select a challenge
+                    or create a new One <a asp-controller="Challenges" asp-action="Create" class="button">Create a Challenge</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div id="main">
+
+        <!-- One -->
+        <section id="one" class="tiles">
+           @foreach (var item in Model)
+           {  
+               <article>
+                <span class="image">
+                    <img src="images/pic01.jpg" alt="" />
+                </span>
+                <header class="major">
+                    <h3><a asp-action="Details" asp-controller="Challenges" asp-route-id=@item.Id class="link">@item.Name</a></h3>
+                    <p>Type: <i>@item.ChallengeType</i> - @item.Description </p>
+                    <p>@item.Proofs/@item.Members of members done it</p>
+                    <p>Is Active:@item.IsActive </p>
+                </header>
+            </article>
+
+           }
+        </section>
+    </div>
