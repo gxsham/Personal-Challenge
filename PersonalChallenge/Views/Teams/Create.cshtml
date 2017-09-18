@@ -4,46 +4,49 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<div id="wrapper">
+    <div id="main">
+       
 
-<form asp-action="Create"  enctype="multipart/form-data" method="post">
-    <div class="form-horizontal">
-        <h4>CreateTeamViewModel</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="TeamPic" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input type="file" asp-for="TeamPic" class="form-control" />
-                <span asp-validation-for="TeamPic" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        <div class="inner">
+            <header class="major">
+                <h2>Create a team</h2>
+            </header>
+            <section>
+                <form asp-action="Create" enctype="multipart/form-data" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="field half first">
+                        <label asp-for="Name" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="field half">
+                        <label asp-for="Description" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label asp-for="TeamPic"></label>
+                        <div class="col-md-10">
+                            <input type="file" asp-for="TeamPic" />
+                            <span asp-validation-for="TeamPic" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Create" class="special" /></li>
+                        <li><input type="reset" value="Clear" /></li>
+                        <li><a asp-action="Index" >Back to List</a></li>
+                    </ul>
+                </form>
+            </section>
         </div>
     </div>
-</form>
+    </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

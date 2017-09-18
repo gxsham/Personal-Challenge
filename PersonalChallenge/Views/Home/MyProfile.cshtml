@@ -14,10 +14,11 @@
             <header class="major">
                 <h1>@Model.Name @Model.Surname</h1>
             </header>
-            <p><span class="image left"><img src="~/ProfilePics/@Model.ProfilePic" alt="" /></span> @Model.Email <br /> @Model.Birthday <br /> Challenges Done: @Model.ChallengesDone <br /> 
+            <p><span class="image left"><img src="~/ProfilePics/@Model.ProfilePic" /></span> @Model.Email <br /> @Model.Birthday <br /> Challenges Done: @Model.ChallengesDone <br /> 
             @if (Model.TeamId != null)
             {
-                @Html.ActionLink(Model.TeamName, "Details", "Teams", new { id = Model.TeamId }) <br />
+                <br/>
+                @Html.ActionLink(Model.TeamName, "Details", "Teams", new { id = Model.TeamId }) <br /><br />
                 @Html.ActionLink("Go to Challenges", "Index", "Challenges")
                 }
             </p>

@@ -27,25 +27,7 @@ namespace PersonalChallenge.Controllers
             return View(await _context.ChallengeTypes.ToListAsync());
         }
 
-        // GET: ChallengeTypes/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var challengeType = await _context.ChallengeTypes
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (challengeType == null)
-            {
-                return NotFound();
-            }
-
-            return View(challengeType);
-        }
-
-        // GET: ChallengeTypes/Create
+           // GET: ChallengeTypes/Create
         public IActionResult Create()
         {
             return View();

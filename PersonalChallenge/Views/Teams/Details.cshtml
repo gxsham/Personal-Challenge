@@ -4,60 +4,34 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<div id="wrapper">
 
-<div>
-    <h4>TeamDetailsViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ChallengesDone)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ChallengesDone)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TeamPic)
-        </dt>
-        <dd>
-            <img src="~/TeamPics/@Model.TeamPic" style="overflow: hidden; position: relative; max-width:400px;" />
-        </dd>
-        <dt>
-            Challenges
-        </dt>
-        <dd>
-            @foreach (var item in Model.Challenges)
-             {
-                <div>@item.Name | @item.Description | @item.IsActive</div>
-                <br />
-            }
-        </dd>
-        <dt>
-            Members
-        </dt>
-        <dd>
-            @foreach (var item in Model.Members)
-            {
-                <div>@item.Name | @item.Surname | @item.ChallengesDone</div>
-                <br />
-             }
-        </dd>
+    <div id="main" class="alt">
 
-    </dl>
-</div>
-<div>
-    <a asp-action="Index">Back to List</a> | 
-    <a asp-action="Unroll">Unroll from this team</a>
+        <!-- One -->
+        <section id="one">
+            <div class="inner">
+                <header class="major">
+                    <h1>@Model.Name</h1>
+                </header>
+                <div>
+                    <a asp-action="Unroll" class="button">Unroll from this team</a>
+                    <a asp-action="Index" style="text-underline-position:unset">Back to List</a> 
+                </div>
+               <p>@Model.Description</p>
+                <span class="image main"><img src=~/TeamPics/@Model.TeamPic alt="" /></span>
+                <h2>Challenges Done: @Model.ChallengesDone</h2>
+                <p>Challenges:</p>
+                @foreach (var item in Model.Challenges)
+                {
+                    <div><b>@item.Name  @item.Description</b> <i>Is Active: @item.IsActive</i></div>
+                    <br />}
+                <p>Team Members:</p>
+                @foreach (var item in Model.Members)
+                {
+                    <div><b>@item.Name  @item.Surname</b> <i>Challenges Done:  @item.ChallengesDone</i></div>
+                    <br />}
+            </div>
+        </section>
+    </div>
 </div>

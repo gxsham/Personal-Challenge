@@ -4,44 +4,63 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MeasuredIn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Approved)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MeasuredIn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Approved)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div id="wrapper">
+    <section id="banner" class="style2">
+        <div class="inner">
+            <span class="image">
+                <img src="images/pic07.jpg" alt="" />
+            </span>
+            <header class="major">
+                <h1>Challenge Types</h1>
+            </header>
+            <div class="content">
+                <p>
+                    Use one of the existing Challenge Types or  <a asp-controller="ChallengeTypes" asp-action="Create" class="button">Create a new one</a>
+                </p>
+            </div>
+
+
+        </div>
+    </section>
+    <section id="one">
+        <div class="inner">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.MeasuredIn)</th>
+                            <th>@Html.DisplayNameFor(model => model.Approved)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MeasuredIn)
+                                </td>
+                                <td>
+                                    <div class="6u 12u$(small)">
+                                        
+                                        <label for="demo-copy">@item.Approved</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
